@@ -1,0 +1,9 @@
+{
+    "sensors": {}, 
+    "thermostates": {
+        "1": {
+            "sensors": [], 
+            "temperature": "21"
+        }
+    }
+}
