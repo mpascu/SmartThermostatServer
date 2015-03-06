@@ -1,22 +1,48 @@
 {
-"sensors" : {
-	"1": {
-		"value": "21,3"
-	}, 
-	"2": {
-	        "value": "22,1"
-	}, 
-	"3": {
-		"value": "21,6"
-	}, 
-	"4": {
-		"value": "19,8"
-	}
-},
-"thermostates" : {
-	"1": {
-		"temperature" : "21",
-		"sensors" : [ 1, 3, 4]
-	}
-}
+    "sensors": [
+        {
+            "1": {
+                "name": "cuina", 
+                "value": "21,3"
+            }
+        }, 
+        {
+            "2": {
+                "name": "pasillo", 
+                "value": "22,1"
+            }
+        }, 
+        {
+            "3": {
+                "name": "dormitori", 
+                "value": "21,6"
+            }
+        }, 
+        {
+            "4": {
+                "name": "dormitori nens", 
+                "value": "19,8"
+            }
+        }
+], 
+    "thermostats": [
+        {
+            "1": {
+                "name": "Planta baixa", 
+                "sensors": [
+                    1, 
+                    3, 
+                    4
+                ], 
+                "temperature": "21"
+            }
+        }, 
+        {
+            "2": {
+                "name": "Primer pis", 
+                "sensors": [], 
+                "temperature": "21"
+            }
+        }
+    ]
 }
