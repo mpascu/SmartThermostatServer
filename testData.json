@@ -23,14 +23,8 @@
                 "name": "dormitori nens", 
                 "value": "19,8"
             }
-        }, 
-        {
-            "5": {
-                "name": "tjjj", 
-                "value": "0"
-            }
         }
-    ], 
+], 
     "thermostats": [
         {
             "1": {
@@ -40,21 +34,16 @@
                     3, 
                     4
                 ], 
-                "temperature": "21"
+                "temperature": "21",
+                "mode":"AUTO"
             }
         }, 
         {
             "2": {
                 "name": "Primer pis", 
                 "sensors": [], 
-                "temperature": "21"
-            }
-        }, 
-        {
-            "3": {
-                "name": "Segon pis", 
-                "sensors": [], 
-                "temperature": "21"
+                "temperature": "21",
+                "mode":"ON"
             }
         }
     ]

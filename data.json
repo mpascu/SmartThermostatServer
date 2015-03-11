@@ -34,14 +34,16 @@
                     3, 
                     4
                 ], 
-                "temperature": "21"
+                "temperature": "21",
+                "mode":"AUTO"
             }
         }, 
         {
             "2": {
                 "name": "Primer pis", 
                 "sensors": [], 
-                "temperature": "21"
+                "temperature": "21",
+                "mode":"ON"
             }
         }
     ]
