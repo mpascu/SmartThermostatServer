@@ -3,12 +3,12 @@
         {
             "1": {
                 "name": "cuina", 
-                "value": "19"
+                "value": "23"
             }
         }, 
         {
             "2": {
-                "name": "pasillo", 
+                "name": "passadis", 
                 "value": "20"
             }
         }, 
@@ -29,42 +29,78 @@
                 "name": "menjador", 
                 "value": "21"
             }
-        }, 
-        {
-            "6": {
-                "name": "lala", 
-                "value": "0"
-            }
         }
     ], 
     "thermostats": [
         {
             "1": {
+                "hot": "false", 
                 "mode": "AUTO", 
                 "name": "Planta baixa", 
                 "sensors": [
-                    5, 
+                    2, 
                     1, 
-                    3, 
-                    4
+                    3
                 ], 
-                "temperature": "20.0"
+                "temperature": "22.5", 
+                "time": [
+                    {
+                        "daysOfWeek": [
+                            2, 
+                            3, 
+                            4, 
+                            5, 
+                            6
+                        ], 
+                        "enabled": "true", 
+                        "endHour": 12, 
+                        "endMinutes": 0, 
+                        "id": 1, 
+                        "startHour": 9, 
+                        "startMinutes": 0
+                    }, 
+                    {
+                        "daysOfWeek": [
+                            1, 
+                            7
+                        ], 
+                        "enabled": "false", 
+                        "endHour": 20, 
+                        "endMinutes": 0, 
+                        "id": 2, 
+                        "startHour": 15, 
+                        "startMinutes": 0
+                    }, 
+                    {
+                        "daysOfWeek": [], 
+                        "enabled": "false", 
+                        "endHour": 22, 
+                        "endMinutes": 0, 
+                        "id": 3, 
+                        "startHour": 9, 
+                        "startMinutes": 0
+                    }
+                ]
             }
         }, 
         {
             "2": {
+                "hot": "true", 
                 "mode": "ON", 
-                "name": "Primer pis", 
+                "name": "hihihihih", 
                 "sensors": [], 
-                "temperature": "21.0"
+                "temperature": "21.0", 
+                "time": []
             }
         }, 
         {
             "3": {
+                "hot": "true", 
                 "mode": "ON", 
-                "name": "segon pis", 
+                "name": "primer pis", 
                 "sensors": [], 
-                "temperature": "21.0"
+                "temperature": "21.0", 
+                "time": []
             }
         }
     ]

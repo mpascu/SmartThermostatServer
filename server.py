@@ -7,9 +7,6 @@ import ast
 import Adafruit_DHT
 
 GPIO.setmode(GPIO.BCM) 
-GPIO.setup(4, GPIO.OUT)  
-GPIO.setup(17, GPIO.OUT)  
-GPIO.setup(27, GPIO.OUT) 
 
 USE_TEST_TEMPERATURES = False
 app = Flask(__name__)
@@ -40,7 +37,7 @@ class sensorReader(threading.Thread):
                         data['sensors'][x][str(x+1)]['value'] = parsedValues[x]
         else:
             while not self.exitapp:
-                humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 7)
+                humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 5)
                 data['sensors'][0]['1']['value'] = str(int(temperature))
                 print 'Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity)
                 time.sleep(1)
@@ -49,6 +46,9 @@ class actuatorTrigger(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
         self.exitapp = False
+        GPIO.setup(4, GPIO.OUT)  
+        GPIO.setup(17, GPIO.OUT)  
+        GPIO.setup(27, GPIO.OUT) 
 
     def run(self):    
         global data
@@ -69,10 +69,16 @@ class actuatorTrigger(threading.Thread):
                     avg = tempCount / float(len(t.get(str(x))['sensors']))
                     '''print avg'''
                     '''print t.get(str(x))['temperature']'''
-                    if (float(t.get(str(x))['temperature'])-avg)<0.5:
-                        GPIO.output(pin[x-1], True)
+                    if (t.get(str(x))['hot']!='true'):
+                        if (float(t.get(str(x))['temperature'])-avg)<0.5:
+                            GPIO.output(pin[x-1], True)
+                        else:
+                            GPIO.output(pin[x-1], False) 
                     else:
-                        GPIO.output(pin[x-1], False) 
+                        if (float(t.get(str(x))['temperature'])-avg)<0.5:
+                            GPIO.output(pin[x-1], False)
+                        else:
+                            GPIO.output(pin[x-1], True) 
                 x=x+1
             time.sleep(1) 
 
@@ -123,6 +129,13 @@ def getThermostate(thermid):
         sensors = request.form['sensors']
         sensors= ast.literal_eval(sensors)
         data['thermostats'][id-1].get(str(id))['sensors']=sensors
+        time_programming = (request.form['time_programming'])
+        print (time_programming)
+        '''        n=json.dumps(time_programming)'''
+        data['thermostats'][id-1].get(str(id))['time']=json.loads(time_programming)
+
+        hot = (request.form['hot'])
+        data['thermostats'][id-1].get(str(id))['hot']=hot
         file = open('testData.json','w')
         json.dump(data,file,indent=4)
         file.close()
